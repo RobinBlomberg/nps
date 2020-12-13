@@ -1,7 +1,7 @@
 # Installation
 
 ```
-npm i @robinblomberg/nps
+npm i -D @robinblomberg/nps
 ```
 
 # Usage
@@ -9,19 +9,13 @@ npm i @robinblomberg/nps
 Create a file called **package-scripts.js**:
 
 ```javascript
-const scripts = require('@robinblomberg/nps')(exports);
+const nps = require('@robinblomberg/nps')(exports);
 
-scripts.coverage = {
-  description: 'Analyzes test code coverage.',
-  script: 'nyc --all npm test'
-};
+nps.checkCoverage = 'nyc --all npm test';
 
-scripts.test = {
-  description: 'Runs all tests.',
-  script: 'mocha'
-};
+nps.test = 'mocha';
 
-scripts.testWatch = {
+nps.testWatch = {
   description: 'Runs all tests in watch mode.',
   script: 'mocha --watch --parallel'
 };
@@ -37,4 +31,16 @@ Run a script:
 
 ```
 nps testWatch
+```
+
+# ESM support
+
+If you're using ESM modules, rename your script file to package-scripts.**cjs**.
+
+Then, create a file called **.npsrc.json**:
+
+```json
+{
+  "config": "./package-scripts.cjs"
+}
 ```
