@@ -6,17 +6,14 @@ npm i @robinblomberg/nps
 
 # Usage
 
+Create a file called **package-scripts.js**:
+
 ```javascript
-const { scripts } = require('@robinblomberg/nps')(exports);
+const scripts = require('@robinblomberg/nps')(exports);
 
 scripts.coverage = {
   description: 'Analyzes test code coverage.',
   script: 'nyc --all npm test'
-};
-
-scripts.list = {
-  description: 'Lists all scripts.',
-  script: 'echo; && nps --help --help-style basic && echo;'
 };
 
 scripts.test = {
@@ -28,4 +25,16 @@ scripts.testWatch = {
   description: 'Runs all tests in watch mode.',
   script: 'mocha --watch --parallel'
 };
+```
+
+List all scripts:
+
+```
+nps
+```
+
+Run a script:
+
+```
+nps testWatch
 ```

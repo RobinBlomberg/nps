@@ -1,8 +1,7 @@
 module.exports = (exports) => {
-  return Object.assign(exports, {
-    options: {
-      silent: true
-    },
-    scripts: {}
-  });
+  exports.options = {
+    silent: true
+  };
+
+  return exports.scripts = {};
 };
